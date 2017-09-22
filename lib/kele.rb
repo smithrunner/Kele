@@ -37,11 +37,11 @@ class Kele
     end
   end
   
-  def create_message(sender, recipiend_id, subject, text, token=nil)
+  def create_message(sender, recipient_id, subject, text, token=nil)
     if token.nil?
-      response = self.class.post(api_end_point("messages"), values: {"sender": sender, "recipiend_id": recipiend_id, "subject": subject, "stripped-text": text}, headers: {"authorization" => @auth_token})
+      response = self.class.post(api_end_point("messages"), body: {"sender": sender, "recipient_id": recipient_id, "subject": subject, "stripped-text": text}, headers: {"authorization" => @auth_token})
     else
-      response = self.class.post(api_end_point("messages"), values: {"sender": sender, "recipiend_id": recipiend_id, "token": token, "subject": subject, "stripped-text": text}, headers: {"authorization" => @auth_token})
+      response = self.class.post(api_end_point("messages"), body: {"sender": sender, "recipient_id": recipient_id, "token": token, "subject": subject, "stripped-text": text}, headers: {"authorization" => @auth_token})
     end
   end
   
