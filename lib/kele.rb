@@ -45,6 +45,10 @@ class Kele
     end
   end
   
+  def create_submission(checkpoint_id, enrollment_id)
+    response = self.class.post(api_end_point("checkpoint_submissions"), body: {"checkpoint_id": checkpoint_id, "enrollment_id": enrollment_id}, headers: {"authorization" => @auth_token})
+  end
+  
   private
   
   def api_end_point(endpoint)
